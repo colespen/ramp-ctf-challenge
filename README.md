@@ -1,5 +1,6 @@
-### Hello team Ramp!!
+### Hello team at Ramp!!
 #### Please Note:
+- to begin, kindly click `start: 3000` under the `New devtool` tab at the top of this sandbox environment
 - the script I used to decode the secret URL and flag is located [here](/src/decode_solution/decode.js) 
 
 # Ramp Challenge
