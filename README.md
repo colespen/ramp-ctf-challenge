@@ -1,6 +1,6 @@
 ### Hello team Ramp!!
 #### Please Note:
-- the script I used to decode the secret URL and flag is located [here](/src/decode_solution) 
+- the script I used to decode the secret URL and flag is located [here](/src/decode_solution/decode.js) 
 
 # Ramp Challenge
 
