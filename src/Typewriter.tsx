@@ -8,19 +8,21 @@ const Typewriter = ({
   secret: string;
   isLoading: boolean;
 }) => {
-  const [text, setText] = useState("");
+  const [secretText, setSecretText] = useState("");
   const [started, setStarted] = useState(false);
 
   const handleGenerate = () => {
-    if (started) {
+    if (started) { // will prevent repeat generation in case of re-render!
       return;
     }
     setStarted(true);
-    let i = -1;
+    let index = -1;
     typeDelay = setInterval(() => {
-      i++;
-      if (i === secret.length - 1) clearInterval(typeDelay);
-      setText((prev) => prev + secret[i]);
+      index++;
+      if (index === secret.length - 1) { // need to clear at end of string
+        clearInterval(typeDelay);
+      }
+      setSecretText((prev) => prev + secret[index]);
     }, 500);
   };
 
@@ -32,12 +34,12 @@ const Typewriter = ({
     return () => {
       clearInterval(typeDelay);
     };
-  // eslint-disable-next-line react-hooks/exhaustive-deps
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [isLoading]);
 
   return (
     <ul className="secret">
-      {text.split("").map((character, index) => (
+      {secretText.split("").map((character, index) => (
         <li key={index}>{character}</li>
       ))}
     </ul>
