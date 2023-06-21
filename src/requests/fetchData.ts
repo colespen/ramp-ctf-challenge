@@ -3,9 +3,7 @@ export const fetchData = async (
   setIsLoading: (isLoading: boolean) => void
 ) => {
   try {
-    const response = await fetch(
-      "https://wgg522pwivhvi5gqsn675gth3q0otdja.lambda-url.us-east-1.on.aws/70726f"
-    );
+    const response = await fetch(`${process.env.REACT_APP_SECRET_URL}`);
     const flagData = await response.text();
     setSecret(flagData);
     setIsLoading(false);
