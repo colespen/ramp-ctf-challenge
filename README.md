@@ -1,3 +1,7 @@
+### Hello team Ramp!!
+#### Please Note:
+- the script I used to decode the secret URL and flag is located [here](/src/decode_solution) 
+
 # Ramp Challenge
 
 Thanks for applying to Ramp. Solve this CTF[1] challenge and add the result to your application.

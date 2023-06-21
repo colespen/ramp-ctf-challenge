@@ -1,39 +1,31 @@
 import { useState, useEffect } from "react";
+import { fetchData } from "./requests/fetchData";
+import "./SecretFlag.css";
+import Typewriter from "./Typewriter";
 
 const SecretFlag = () => {
   const [secret, setSecret] = useState("");
   const [isLoading, setIsLoading] = useState(true);
 
   useEffect(() => {
-    
-    const fetchData = async () => {
-      try {
-        const response = await fetch('https://wgg522pwivhvi5gqsn675gth3q0otdja.lambda-url.us-east-1.on.aws/70726f');
-        const flagData = await response.text();
-        setSecret(flagData);
-        setIsLoading(false);
-      } catch (error) {
-        console.error('Error fetching flag:', error);
-      }
-    };
-  
-    fetchData();
-  }, []);
+    const fetchDelay = setTimeout(() => {
+      fetchData(setSecret, setIsLoading);
+    }, 2000);
+
+    return () => clearTimeout(fetchDelay);
+  }, [isLoading, secret]);
 
   return (
     <div>
       {isLoading ? (
-        <p>Loading...</p>
+        <p className="loading">Loading . . .</p>
       ) : (
-        <h1>
-          {secret.split('').map((character, index) => (
-            <li key={index}>{character}</li>
-          ))}
-        </h1>
+        <div>
+          <Typewriter secret={secret} isLoading={isLoading} />
+        </div>
       )}
     </div>
   );
-
 };
 
-export default SecretFlag
+export default SecretFlag;

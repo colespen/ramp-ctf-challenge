@@ -5,7 +5,6 @@ function App() {
   return (
     <div className="App">
       <SecretFlag />
-      <h1>load secret word here</h1>
     </div>
   );
 }
